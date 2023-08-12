@@ -8,10 +8,12 @@ version = "1.0.0-DEV"
 [weakdeps]
 BioSequences = "7e6ae17a-c86d-528c-b3b9-7f778a29fe59"
 CUDA = "052768ef-5323-5732-b1bb-66c8b64840ba"
+SparseArrays = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
 
 [extensions]
 BioSequencesExt = "BioSequences"
 CUDAExt = "CUDA"
+SparseArraysExt = "SparseArrays"
 
 [compat]
 julia = "1"
@@ -20,7 +22,8 @@ BioSequences = "3"
 [extras]
 BioSequences = "7e6ae17a-c86d-528c-b3b9-7f778a29fe59"
 CUDA = "052768ef-5323-5732-b1bb-66c8b64840ba"
+SparseArrays = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]
-test = ["Test", "BioSequences", "CUDA"]
+test = ["Test", "BioSequences", "CUDA", "SparseArrays"]
