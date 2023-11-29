@@ -5,18 +5,18 @@ DocTestSetup = quote
 end
 ```
 
-# Matrices of k-mer counts
+# Matrices of K-mer counts
 
-How can we efficiently store multiple k-mer count vectors of sequences? We *could* use a regular vector: `Base.Vector{<:KmerVector}`, but remember that `KmerVector` can wrap any `AbstractVector`, including rows/columns of matrices, which means that we can store the k-mer counts of multiple sequences next to each other in a matrix (all $k$-mer counts will have a size of $S^k$). This can be done using the `KmerColumns` and `KmerRows` types, which wrap `AbstractMatrix` types, and store the k-mer counts as columns and rows of the matrix, respectively.
+How can we efficiently store multiple K-mer count vectors of sequences? We *could* use a regular vector: `Base.Vector{<:KmerVector}`, but remember that `KmerVector` can wrap any `AbstractVector`, including rows/columns of matrices, which means that we can store the K-mer counts of multiple sequences next to each other in a matrix (all $k$-mer counts will have a size of $S^k$). This can be done using the `KmerColumns` and `KmerRows` types, which wrap `AbstractMatrix` types, and store the K-mer counts as columns and rows of the matrix, respectively.
 
 Let's create an instance of `KmerColumns`, and configure it for storing the 1-mer counts of three DNA sequences. The alphabet size for DNA is 4, so each KmerVector will have a size of $S^k=4^1=4$. We'll initialize it with a matrix of zeros:
 
 ```jldoctest
-julia> k = 1;
+julia> K = 1;
 
 julia> n = 3;
 
-julia> kc = KmerColumns{4, k}(n)
+julia> kc = KmerColumns{4, K}(n)
 4×3 KmerColumns{4, 1, Int64, Matrix{Int64}}:
  0  0  0
  0  0  0
@@ -50,9 +50,9 @@ julia> kc[1]
  0
 ```
 
-### Counting k-mers in matrices
+### Counting K-mers in matrices
 
-Now that we understand how storing k-mer counts in matrices works, we can count k-mers of sequences using a method of `count_kmers!` that takes a `KmerVector` and a sequence as input.
+Now that we understand how storing K-mer counts in matrices works, we can count K-mers of sequences using a method of `count_kmers!` that takes a `KmerVector` and a sequence as input.
 
 Here, our `KmerColumns` instance, which we call `kc`, is configured to count the 1-mers of DNA. Let's count the 1-mers of the sequence `GATTACA` in the first column of `kc`:
 

@@ -1,16 +1,16 @@
 """
-    AbstractKmerArray{N, S, k, T, A <: AbstractArray{T, N}} <: AbstractArray{T, N}
+    AbstractKmerArray{N, S, K, T, A <: AbstractArray{T, N}} <: AbstractArray{T, N}
 
-Abstract type representing k-mer count in N-dimensional arrays. This type serves as the foundation for various concrete k-mer count structures.
+Abstract type representing K-mer count in N-dimensional arrays. This type serves as the foundation for various concrete K-mer count structures.
 
 # Type Parameters
 - `N`: Dimensionality of the array
 - `S`: Alphabet size
-- `k`: k-mer size
+- `K`: K-mer size
 - `T`: Element type
 - `A`: Array type, subtype of `AbstractArray{T, N}`
 """
-abstract type AbstractKmerArray{N, S, k, T, A <: AbstractArray{T, N}} <: AbstractArray{T, N} end
+abstract type AbstractKmerArray{N, S, K, T, A <: AbstractArray{T, N}} <: AbstractArray{T, N} end
 
 const AbstractKmerVector = AbstractKmerArray{1}
 const AbstractKmerMatrix = AbstractKmerArray{2}

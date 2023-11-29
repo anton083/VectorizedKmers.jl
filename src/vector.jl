@@ -1,21 +1,21 @@
 """
-    KmerVector{S, k, T, V} <: AbstractKmerVector{S, k, T, V}
+    KmerVector{S, K, T, V} <: AbstractKmerVector{S, K, T, V}
 
 `A` is the alphabet size,
-`k` is the k-mer size,
+`K` is the K-mer size,
 and `T` is the element type of the underlying `values` field,
 which in turn has type `V`.
 """
-struct KmerVector{S, k, T, V} <: AbstractKmerVector{S, k, T, V}
+struct KmerVector{S, K, T, V} <: AbstractKmerVector{S, K, T, V}
     values::V
 
-    function KmerVector{S, k}(values::V) where {S, k, T, V <: AbstractVector{T}}
-        @assert length(values) == S^k
-        return new{S, k, T, V}(values)
+    function KmerVector{S, K}(values::V) where {S, K, T, V <: AbstractVector{T}}
+        @assert length(values) == S^K
+        return new{S, K, T, V}(values)
     end
 
-    function KmerVector{S, k}(; T::Type{<:Real}=Int, zeros::Function=zeros) where {S, k}
-        return KmerVector{S, k}(zeros(T, S^k))
+    function KmerVector{S, K}(; T::Type{<:Real}=Int, zeros::Function=zeros) where {S, K}
+        return KmerVector{S, K}(zeros(T, S^K))
     end
 end
 

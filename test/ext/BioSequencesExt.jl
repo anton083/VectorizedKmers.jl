@@ -33,11 +33,11 @@ using BioSequences
 
         @testset "Multiple sequences" begin
             seqs = [dna"ACGT", dna"GATTACA"]
-            k = 1
+            K = 1
             kcs = KmerColumns{4, 1}(length(seqs))
             @test count_kmers!(kcs, seqs).values == count_kmers!(KmerColumns{4, 1}(length(seqs)), view(seqs, 1:length(seqs))).values
             @test count_kmers!(kcs, seqs).values == [1 3; 1 1; 1 1; 1 2]
-            @test kcs.values == count_kmers(seqs, k).values
+            @test kcs.values == count_kmers(seqs, K).values
         end
 
     end

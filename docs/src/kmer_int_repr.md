@@ -1,6 +1,6 @@
-# Integer representation of k-mers
+# Integer representation of K-mers
 
-This package relies on representing k-mers as integers for indexing. This page goes over how that works exactly.
+This package relies on representing K-mers as integers for indexing. This page goes over how that works exactly.
 
 ## DNA sequences
 
@@ -43,7 +43,7 @@ julia> f(k;i=0)=[i=4i|(c%Int-1-(c=='C'))&3 for c=k][end]; # or if you're into co
 !!! note
     Consider using types like `BioSequences.LongDNA{4}` instead of `String`, as strings are not optimized for performance.
 
-This function would not be very efficient in a practical setting (even though we're using super cool bit manipulation), since we're convert each k-mer individually, instead of having some kind of sliding window. Moreover, the function takes the k-mer in the form of a `String`, which is not ideal. The function should work as intended, though. Let's test it:
+This function would not be very efficient in a practical setting (even though we're using super cool bit manipulation), since we're convert each K-mer individually, instead of having some kind of sliding window. Moreover, the function takes the K-mer in the form of a `String`, which is not ideal. The function should work as intended, though. Let's test it:
 
 ```jldoctest
 julia> kmer_to_int("GATTACA")
@@ -78,7 +78,7 @@ julia> reinterpret.(Int8, [AA_A, AA_M, AA_I, AA_N, AA_O])
  20
 ```
 
-Let's say we want to convert the amino acid sequence `AMINO` to an integer. As seen above, the amino acids in the sequence have values of `0`, `12`, `9`, `2`, and `20` respectively. Thus, the integer value of the k-mer should be:
+Let's say we want to convert the amino acid sequence `AMINO` to an integer. As seen above, the amino acids in the sequence have values of `0`, `12`, `9`, `2`, and `20` respectively. Thus, the integer value of the K-mer should be:
 
 $$
 0 \cdot 28^4 + 12 \cdot 28^3 + 9 \cdot 28^2 + 2 \cdot 28^1 + 20 \cdot 28^0 = 270556

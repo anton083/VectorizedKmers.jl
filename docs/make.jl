@@ -12,10 +12,10 @@ makedocs(;
     doctest = false,
     pages = [
         "Home" => "index.md",
-        "Integer representation of k-mers" => "kmer_int_repr.md",
-        "k-mer counting" => Any[
-            "Vectors of k-mer counts" => "kmer_count_vector.md",
-            "Matrices of k-mers counts" => "kmer_count_matrix.md",
+        "Integer representation of K-mers" => "kmer_int_repr.md",
+        "K-mer counting" => Any[
+            "Vectors of K-mer counts" => "kmer_count_vector.md",
+            "Matrices of K-mers counts" => "kmer_count_matrix.md",
         ],
         "API Reference" => "references.md",
     ],

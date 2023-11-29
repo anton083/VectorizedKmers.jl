@@ -1,6 +1,6 @@
-@inline Base.transpose(krs::KmerVectors{D, S, k}) where {D, S, k} = KmerVectors{3-D, S, k}(transpose(krs.values))
-@inline Base.adjoint(kcm::KmerVectors) = transpose(kcm)
+@inline Base.transpose(kvs::KmerVectors{D, S, K}) where {D, S, K} = KmerVectors{3-D, S, K}(transpose(kvs.values))
+@inline Base.adjoint(kvs::KmerVectors) = transpose(kvs)
 
-function KmerVector(f::Function, kvs::KmerVectors{D, S, k}) where {D, S, k}
-    return KmerVector{S, k}(reshape(mapslices(f, kvs.values, dims=3-D), :))
+function KmerVector(f::Function, kvs::KmerVectors{D, S, K}) where {D, S, K}
+    return KmerVector{S, K}(reshape(mapslices(f, kvs.values, dims=3-D), :))
 end
